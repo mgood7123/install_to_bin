@@ -1,1 +1,15 @@
+if [[ ! -e "/bin_world_writable" ]]
+    then
+        sudo mkdir /bin_world_writable
+        sudo chmod 777 /bin_world_writable
+fi
 
+if (( $# >= 1 )); then
+    f="$(readlink -f "$1")";
+    b="$(basename $f)"
+    shift  1;
+else
+    echo "error: must specify a file"
+fi
+
+ln -sv $f /bin_world_writable/$b
