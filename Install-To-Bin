@@ -1,12 +1,12 @@
-if [[ ! -e "/bin_world_writable" ]]
+if [[ ! -e "$HOME/bin" ]]
     then
-        sudo mkdir /bin_world_writable
-        sudo chmod 777 /bin_world_writable
+        mkdir "$HOME/bin"
+        chmod 777 "$HOME/bin"
 fi
 
 if (( $# >= 1 )); then
     src="$(readlink -f "$1")";
-    dest="/bin_world_writable/$(basename $src)"
+    dest="$HOME/bin/$(basename $src)"
     shift  1;
 else
     echo "error: must specify a file"
