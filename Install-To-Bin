@@ -1,7 +1,7 @@
 if [[ ! -e "$HOME/bin" ]]
     then
         mkdir "$HOME/bin"
-        chmod 777 "$HOME/bin"
+        chmod 775 "$HOME/bin"
 fi
 
 if (( $# >= 1 )); then
@@ -19,3 +19,4 @@ if [[ -e $dest || -L $dest ]]
 fi
 
 ln -sv "$src" "$dest"
+chmod -v +x "$src"
