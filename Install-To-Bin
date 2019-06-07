@@ -1,3 +1,9 @@
+if (( $# == 0 )); then
+    echo usage: $(basename "$0") SRC
+    echo usage: $(basename "$0") SRC NEW_NAME
+    exit
+fi
+
 if [[ ! -e "$HOME/bin" ]]
     then
         mkdir "$HOME/bin"
@@ -11,8 +17,6 @@ if (( $# >= 1 )); then
     else
         dest="$HOME/bin/$(basename $src)"
     fi
-else
-    echo "error: must specify a file"
 fi
 
 if [[ -e $dest || -L $dest ]]
